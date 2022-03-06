@@ -17,6 +17,7 @@ final class BrowseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "browse.title".localized
         view.backgroundColor = .systemBackground
         addViews()
         addConstraints()

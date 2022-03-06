@@ -23,7 +23,7 @@ final class TabBarController: UITabBarController {
     private func createBrowseVC() -> UINavigationController {
         let vc = BrowseVC()
         vc.tabBarItem = UITabBarItem(
-            title: "Browse",
+            title: "browse.title".localized,
             image: UIImage(systemName: "doc.text.image"),
             tag: 0
         )

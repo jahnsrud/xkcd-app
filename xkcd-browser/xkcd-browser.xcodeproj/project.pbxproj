@@ -16,6 +16,8 @@
 		286FB58627D51C7900CFFB33 /* NetworkingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 286FB57F27D51C7900CFFB33 /* NetworkingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		286FB58B27D51CA200CFFB33 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FB57827D4F72800CFFB33 /* HTTPClient.swift */; };
 		286FB58D27D51EFE00CFFB33 /* ComicDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FB58C27D51EFE00CFFB33 /* ComicDetailVC.swift */; };
+		286FB58F27D520F700CFFB33 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 286FB58E27D520F700CFFB33 /* Localization.strings */; };
+		286FB59127D5215700CFFB33 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FB59027D5215700CFFB33 /* String+Extensions.swift */; };
 		28BE316227D4ED31002208A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BE316127D4ED31002208A3 /* AppDelegate.swift */; };
 		28BE316427D4ED31002208A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BE316327D4ED31002208A3 /* SceneDelegate.swift */; };
 		28BE316B27D4ED33002208A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BE316A27D4ED33002208A3 /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		286FB57F27D51C7900CFFB33 /* NetworkingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		286FB58127D51C7900CFFB33 /* NetworkingKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingKit.h; sourceTree = "<group>"; };
 		286FB58C27D51EFE00CFFB33 /* ComicDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailVC.swift; sourceTree = "<group>"; };
+		286FB58E27D520F700CFFB33 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
+		286FB59027D5215700CFFB33 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		28BE315E27D4ED31002208A3 /* xkcd-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xkcd-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BE316127D4ED31002208A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28BE316327D4ED31002208A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				286FB57127D4F3A900CFFB33 /* UIView+Extensions.swift */,
+				286FB59027D5215700CFFB33 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				28BE316A27D4ED33002208A3 /* Assets.xcassets */,
 				28BE316C27D4ED33002208A3 /* LaunchScreen.storyboard */,
 				28BE316F27D4ED33002208A3 /* Info.plist */,
+				286FB58E27D520F700CFFB33 /* Localization.strings */,
 			);
 			path = "xkcd-browser";
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28BE316E27D4ED33002208A3 /* LaunchScreen.storyboard in Resources */,
+				286FB58F27D520F700CFFB33 /* Localization.strings in Resources */,
 				28BE316B27D4ED33002208A3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +308,7 @@
 				28BE317627D4EE07002208A3 /* TabBarController.swift in Sources */,
 				286FB57627D4F61500CFFB33 /* Comic.swift in Sources */,
 				286FB57227D4F3A900CFFB33 /* UIView+Extensions.swift in Sources */,
+				286FB59127D5215700CFFB33 /* String+Extensions.swift in Sources */,
 				28BE316227D4ED31002208A3 /* AppDelegate.swift in Sources */,
 				286FB58D27D51EFE00CFFB33 /* ComicDetailVC.swift in Sources */,
 				28BE316427D4ED31002208A3 /* SceneDelegate.swift in Sources */,
