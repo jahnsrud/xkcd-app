@@ -15,6 +15,10 @@ final class BrowseViewModel {
     private func fetchComics() {
         let url = URL(string: "https://xkcd.com/info.0.json")!
         
+        // API:
+        // Get latest: https://xkcd.com/info.0.json
+        // Get specific: https://xkcd.com/-num-/info.0.json
+        
         httpClient.fetch(from: url) { result in
             switch result {
             case .success(let data):
@@ -30,7 +34,6 @@ final class BrowseViewModel {
             let comics = try JSONDecoder().decode(ComicDTO.self, from: data)
             self.comicItems.append(comics.toModel())
         } catch {
-            
         }
     }
     

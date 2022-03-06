@@ -16,12 +16,14 @@ final class FullHeightComicCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .blue
+        label.numberOfLines = 0
         return label
     }()
     
@@ -57,7 +59,7 @@ final class FullHeightComicCell: UITableViewCell {
     
     func setComic(_ comic: Comic) {
         titleLabel.text = comic.title
-        descriptionLabel.text = comic.formattedNumber
+        descriptionLabel.text = comic.alt ?? comic.formattedNumber
         
         httpClient.fetch(from: comic.imageUrl) { result in
             DispatchQueue.main.async {

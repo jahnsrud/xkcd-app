@@ -1,13 +1,12 @@
 import Foundation
 
 struct Comic {
-    /* let day: String
-    let month: String
-    let year: String */
     let num: Int
-    let link: String?
-    // let news: String?
+    let date: Date?
     let title: String
+    let link: String?
+    let alt: String?
+    // let news: String?
     // let safe_title: String?
     // let alt: String
     let imageUrl: URL

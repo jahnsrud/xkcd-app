@@ -36,7 +36,7 @@ final class ComicDetailViewController: UIViewController {
         view.addAutoLayoutView(dateLabel)
         
         descriptionLabel.text = comic.transcript
-        dateLabel.text = "00/00/0000"
+        dateLabel.text = comic.date?.formatted()
         
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
