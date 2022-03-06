@@ -1,9 +1,14 @@
 import UIKit
+import Combine
 
 final class BrowseVC: UIViewController {
 
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let refreshControl = UIRefreshControl()
+    
+    private var comicItems = [Comic]()
+    private let listViewModel = BrowseViewModel()
+    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,6 +17,14 @@ final class BrowseVC: UIViewController {
         addViews()
         addConstraints()
         setupTableView()
+        
+        listViewModel.$comicItems
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                self?.comicItems = items
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
     }
 
     private func addViews() {
@@ -41,18 +54,19 @@ final class BrowseVC: UIViewController {
 }
 extension BrowseVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return comicItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comic = comicItems[indexPath.row]
         let cell = FullHeightComicCell()
+        cell.setContent(comic: comic)
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = .gray
         } else {
             cell.backgroundColor = .lightGray
         }
-        
         
         return cell
     }

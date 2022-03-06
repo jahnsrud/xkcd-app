@@ -15,13 +15,12 @@ final class FullHeightComicCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "title.todo"
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "description.todo"
+        label.textColor = .blue
         return label
     }()
     
@@ -51,6 +50,11 @@ final class FullHeightComicCell: UITableViewCell {
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.HorizontalMargin),
             
         ])
+    }
+    
+    func setContent(comic: Comic) {
+        titleLabel.text = comic.title
+        descriptionLabel.text = "# \(comic.num)"
     }
 
 }
