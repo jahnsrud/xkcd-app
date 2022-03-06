@@ -2,6 +2,10 @@ import UIKit
 
 final class ComicDetailVC: UIViewController {
     
+    private enum Constants {
+        static let HorizontalMargin = 20.0
+    }
+    
     private let comic: Comic
     
     private let descriptionLabel: UILabel = {
@@ -25,7 +29,7 @@ final class ComicDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Description"
+        self.title = comic.title
         view.backgroundColor = .systemBackground
         
         view.addAutoLayoutView(descriptionLabel)
@@ -36,8 +40,8 @@ final class ComicDetailVC: UIViewController {
         
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.HorizontalMargin),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.HorizontalMargin),
             
             dateLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
             dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)

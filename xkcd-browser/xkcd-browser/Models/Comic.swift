@@ -13,3 +13,9 @@ struct Comic {
     let imageUrl: URL
     let transcript: String?
 }
+
+extension Comic {
+    var formattedNumber: String {
+        "# \(num)"
+    }
+}

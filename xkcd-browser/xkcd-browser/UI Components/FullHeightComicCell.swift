@@ -1,14 +1,15 @@
 import UIKit
+import NetworkingKit
 
 final class FullHeightComicCell: UITableViewCell {
-
+    
     private enum Constants {
         static let BottomMargin = 16.0
         static let HorizontalMargin = 20.0
     }
     
     private let contentImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "bookmark.circle.fill"))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -23,6 +24,8 @@ final class FullHeightComicCell: UITableViewCell {
         label.textColor = .blue
         return label
     }()
+    
+    private let httpClient = HTTPClient()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: "TODO_FIX")
@@ -54,7 +57,19 @@ final class FullHeightComicCell: UITableViewCell {
     
     func setContent(comic: Comic) {
         titleLabel.text = comic.title
-        descriptionLabel.text = "# \(comic.num)"
+        descriptionLabel.text = comic.formattedNumber
+        
+        httpClient.fetch(from: comic.imageUrl) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.contentImageView.image = UIImage(data: data)
+                case .failure:
+                    self.contentImageView.image = nil
+                }
+            }
+        }
+        
     }
-
+    
 }
