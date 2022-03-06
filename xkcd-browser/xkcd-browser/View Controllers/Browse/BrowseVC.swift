@@ -45,13 +45,14 @@ final class BrowseVC: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] items in
                 self?.comicItems = items
-                self?.tableView.reloadData()
+                self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+                self?.refreshControl.endRefreshing()
             }
             .store(in: &cancellables)
     }
     
-    private func presentDetailView() {
-        let vc = ComicDetailVC()
+    private func presentDetailView(for comic: Comic) {
+        let vc = ComicDetailVC(comic: comic)
         let navController = UINavigationController(rootViewController: vc)
         navController.sheetPresentationController?.detents = [.medium(), .large()]
         self.present(navController, animated: true)
@@ -84,7 +85,8 @@ extension BrowseVC: UITableViewDataSource {
 
 extension BrowseVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedComic = comicItems[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        presentDetailView()
+        presentDetailView(for: selectedComic)
     }
 }

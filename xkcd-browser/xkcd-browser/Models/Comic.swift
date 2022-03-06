@@ -9,7 +9,7 @@ struct Comic {
     // let news: String?
     let title: String
     // let safe_title: String?
-    // let transcript: String?
     // let alt: String
     let imageUrl: URL
+    let transcript: String?
 }

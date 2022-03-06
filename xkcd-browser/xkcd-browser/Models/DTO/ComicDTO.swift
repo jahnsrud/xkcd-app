@@ -20,7 +20,8 @@ extension ComicDTO {
             num: self.num,
             link: self.link,
             title: self.title,
-            imageUrl: URL(string: self.img)!
+            imageUrl: URL(string: self.img)!,
+            transcript: self.transcript
         )
     }
 }
