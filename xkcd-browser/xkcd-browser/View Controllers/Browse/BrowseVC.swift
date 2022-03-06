@@ -2,12 +2,8 @@ import UIKit
 
 final class BrowseVC: UIViewController {
 
-    private let placeholderLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Coming soon"
-        return label
-    }()
-    
+    private let tableView = UITableView(frame: .zero, style: .plain)
+
     private let placeholderReadMoreButton: UIButton = {
         let button = UIButton()
         button.setTitle("Detail View [beta]", for: .normal)
@@ -21,6 +17,7 @@ final class BrowseVC: UIViewController {
         view.backgroundColor = .systemBackground
         addViews()
         addConstraints()
+        setupTableView()
         
         placeholderReadMoreButton.addAction(UIAction(handler: { _ in
             let vc = ComicDetailVC()
@@ -30,16 +27,55 @@ final class BrowseVC: UIViewController {
         }), for: .primaryActionTriggered)
         
     }
-    
+
     private func addViews() {
-        view.addAutoLayoutView(placeholderLabel)
+        view.addAutoLayoutView(tableView)
         view.addAutoLayoutView(placeholderReadMoreButton)
     }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            placeholderReadMoreButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            placeholderReadMoreButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            placeholderReadMoreButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12)
         ])
     }
     
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.isPagingEnabled = true
+        tableView.allowsSelection = false
+    }
+    
+}
+extension BrowseVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = .gray
+        } else {
+            cell.backgroundColor = .lightGray
+        }
+        
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height
+    }
+}
+
+extension BrowseVC: UITableViewDelegate {
+   
 }
