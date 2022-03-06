@@ -1,7 +1,7 @@
 import UIKit
 import Combine
 
-final class BrowseVC: UIViewController {
+final class BrowseViewController: UIViewController {
 
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let refreshControl = UIRefreshControl()
@@ -52,14 +52,14 @@ final class BrowseVC: UIViewController {
     }
     
     private func presentDetailView(for comic: Comic) {
-        let vc = ComicDetailVC(comic: comic)
+        let vc = ComicDetailViewController(comic: comic)
         let navController = UINavigationController(rootViewController: vc)
         navController.sheetPresentationController?.detents = [.medium(), .large()]
         self.present(navController, animated: true)
     }
     
 }
-extension BrowseVC: UITableViewDataSource {
+extension BrowseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comicItems.count
     }
@@ -67,7 +67,7 @@ extension BrowseVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let comic = comicItems[indexPath.row]
         let cell = FullHeightComicCell()
-        cell.setContent(comic: comic)
+        cell.setComic(comic)
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = .gray
@@ -83,7 +83,7 @@ extension BrowseVC: UITableViewDataSource {
     }
 }
 
-extension BrowseVC: UITableViewDelegate {
+extension BrowseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedComic = comicItems[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)

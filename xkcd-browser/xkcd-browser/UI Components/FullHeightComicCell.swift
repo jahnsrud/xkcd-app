@@ -55,7 +55,7 @@ final class FullHeightComicCell: UITableViewCell {
         ])
     }
     
-    func setContent(comic: Comic) {
+    func setComic(_ comic: Comic) {
         titleLabel.text = comic.title
         descriptionLabel.text = comic.formattedNumber
         

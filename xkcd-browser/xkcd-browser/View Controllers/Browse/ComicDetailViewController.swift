@@ -1,6 +1,6 @@
 import UIKit
 
-final class ComicDetailVC: UIViewController {
+final class ComicDetailViewController: UIViewController {
     
     private enum Constants {
         static let HorizontalMargin = 20.0
