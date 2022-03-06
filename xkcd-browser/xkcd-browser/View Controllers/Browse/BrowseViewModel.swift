@@ -13,13 +13,25 @@ final class BrowseViewModel {
     }
     
     private func fetchComics() {
-        httpClient.fetch(from: URL(string: "https://xkcd.com/info.0.json")!)
+        let url = URL(string: "https://xkcd.com/info.0.json")!
         
-        // TODO: remove
-        self.comicItems = [
-            Comic(num: 0, link: "coming_soon", title: "coming_soon", imageUrl: URL(string: "https://www.nrk.no")!, transcript: "Forklaring"),
-            Comic(num: 1, link: "coming_soon", title: "coming_soon", imageUrl: URL(string: "https://www.vg.no")!, transcript: "Forklaring")
-        ]
+        httpClient.fetch(from: url) { result in
+            switch result {
+            case .success(let data):
+                self.parseResults(data: data)
+            case .failure(let error):
+                print("Something went wrong: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func parseResults(data: Data) {
+        do {
+            let comics = try JSONDecoder().decode(ComicDTO.self, from: data)
+            self.comicItems.append(comics.toModel())
+        } catch {
+            
+        }
     }
     
     // MARK: User Actions
