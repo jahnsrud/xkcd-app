@@ -8,7 +8,7 @@ struct ComicDTO: Codable {
     let link: String?
     let news: String?
     let title: String
-    let safe_title: String? // TODO: correct formatting
+    let safe_title: String?
     let transcript: String?
     let alt: String
     let img: String
@@ -21,6 +21,6 @@ extension ComicDTO {
             link: self.link,
             title: self.title,
             imageUrl: URL(string: self.img)!
-            )
+        )
     }
 }

@@ -20,20 +20,13 @@ struct HTTPClient {
             }
             
             do {
-                let comicDTO = try JSONDecoder().decode(ComicDTO.self, from: data)
-                
-                print(comicDTO.title)
-                print(comicDTO.alt)
-                print(comicDTO.img)
-                
-                
+                // TODO: Handle
             } catch let error {
                 print(error.localizedDescription)
             }
         })
         
         task.resume()
-        
         
         
     }
