@@ -14,7 +14,8 @@ final class TabBarController: UITabBarController {
     
     private func addTabs() {
         let viewControllers = [
-            createBrowseVC()
+            createBrowseVC(),
+            UIViewController()
         ]
         setViewControllers(viewControllers, animated: false)
     }
