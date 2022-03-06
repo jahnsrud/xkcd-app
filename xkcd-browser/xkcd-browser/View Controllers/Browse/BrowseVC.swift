@@ -3,6 +3,7 @@ import UIKit
 final class BrowseVC: UIViewController {
 
     private let tableView = UITableView(frame: .zero, style: .plain)
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,8 @@ final class BrowseVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isPagingEnabled = true
+        tableView.separatorStyle = .none
+        tableView.refreshControl = refreshControl
         tableView.register(FullHeightComicCell.self, forCellReuseIdentifier: "TODO_FIX")
     }
     
