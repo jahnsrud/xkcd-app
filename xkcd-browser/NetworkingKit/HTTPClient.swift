@@ -1,8 +1,12 @@
 import Foundation
 
-struct HTTPClient {
+public struct HTTPClient {
     
-    func fetch(from url: URL) {
+    public init() {
+        
+    }
+    
+    public func fetch(from url: URL) {
         
         // TODO: try Combine
         

@@ -7,7 +7,7 @@ final class BrowseVC: UIViewController {
     private let refreshControl = UIRefreshControl()
     
     private var comicItems = [Comic]()
-    private let listViewModel = BrowseViewModel()
+    private let viewModel = BrowseViewModel()
     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -17,14 +17,7 @@ final class BrowseVC: UIViewController {
         addViews()
         addConstraints()
         setupTableView()
-        
-        listViewModel.$comicItems
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] items in
-                self?.comicItems = items
-                self?.tableView.reloadData()
-            }
-            .store(in: &cancellables)
+        setupViewModel()
     }
 
     private func addViews() {
@@ -42,6 +35,19 @@ final class BrowseVC: UIViewController {
         tableView.separatorStyle = .none
         tableView.refreshControl = refreshControl
         tableView.register(FullHeightComicCell.self, forCellReuseIdentifier: "TODO_FIX")
+        refreshControl.addAction(UIAction(handler: { _ in
+            self.viewModel.didPullToRefresh()
+        }), for: .valueChanged)
+    }
+    
+    private func setupViewModel() {
+        viewModel.$comicItems
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                self?.comicItems = items
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     private func presentDetailView() {
