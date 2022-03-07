@@ -6,10 +6,12 @@ final class FullHeightComicCell: UITableViewCell {
     private enum Constants {
         static let bottomMargin = 16.0
         static let horizontalMargin = 20.0
+        static let labelMargin = 8.0
+        static let topMargin = 16.0
         static let numberOfLines = 2
     }
     
-    private let contentImageView: UIImageView = {
+    private let comicImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -41,41 +43,45 @@ final class FullHeightComicCell: UITableViewCell {
     }
     
     private func addViews() {
-        contentView.addAutoLayoutView(contentImageView)
+        contentView.addAutoLayoutView(comicImageView)
         contentView.addAutoLayoutView(titleLabel)
         contentView.addAutoLayoutView(descriptionLabel)
     }
     
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            contentImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            contentImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -Constants.bottomMargin),
+            comicImageView.topAnchor.constraint(
+                equalTo: contentView.topAnchor, constant: Constants.topMargin),
+            comicImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalMargin),
+            comicImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalMargin),
+            comicImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -Constants.labelMargin),
+
+            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -Constants.labelMargin),
             titleLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
-            
+
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.bottomMargin),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalMargin),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalMargin),
-            
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalMargin)
         ])
     }
     
     func setComic(_ comic: Comic) {
         titleLabel.text = comic.title
         descriptionLabel.text = comic.alt ?? comic.formattedNumber
-        
-        httpClient.fetch(from: comic.imageUrl) { result in
+        updateImage(url: comic.imageUrl)
+    }
+    
+    private func updateImage(url: URL) {
+        httpClient.fetch(from: url) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    self.contentImageView.image = UIImage(data: data)
+                    self.comicImageView.image = UIImage(data: data)
                 case .failure:
-                    self.contentImageView.image = nil
+                    self.comicImageView.image = nil
                 }
             }
         }
     }
-    
 }
