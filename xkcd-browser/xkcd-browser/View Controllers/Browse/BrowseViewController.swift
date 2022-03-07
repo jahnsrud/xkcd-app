@@ -34,7 +34,7 @@ final class BrowseViewController: UIViewController {
         tableView.isPagingEnabled = true
         tableView.separatorStyle = .none
         tableView.refreshControl = refreshControl
-        tableView.register(FullHeightComicCell.self, forCellReuseIdentifier: "TODO_FIX")
+        tableView.registerCells(FullHeightComicCell.self)
         refreshControl.addAction(UIAction(handler: { _ in
             self.viewModel.didPullToRefresh()
         }), for: .valueChanged)

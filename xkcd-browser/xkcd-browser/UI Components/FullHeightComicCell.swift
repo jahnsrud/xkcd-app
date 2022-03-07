@@ -31,15 +31,19 @@ final class FullHeightComicCell: UITableViewCell {
     private let httpClient = HTTPClient()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: "TODO_FIX")
-        contentView.addAutoLayoutView(contentImageView)
-        contentView.addAutoLayoutView(titleLabel)
-        contentView.addAutoLayoutView(descriptionLabel)
+        super.init(style: .default, reuseIdentifier: FullHeightComicCell.id)
+        addViews()
         addConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addViews() {
+        contentView.addAutoLayoutView(contentImageView)
+        contentView.addAutoLayoutView(titleLabel)
+        contentView.addAutoLayoutView(descriptionLabel)
     }
     
     private func addConstraints() {
@@ -72,7 +76,6 @@ final class FullHeightComicCell: UITableViewCell {
                 }
             }
         }
-        
     }
     
 }
