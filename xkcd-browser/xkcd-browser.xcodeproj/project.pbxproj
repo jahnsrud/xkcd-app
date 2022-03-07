@@ -21,6 +21,7 @@
 		286FB59327D52B2B00CFFB33 /* FullHeightComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FB59227D52B2B00CFFB33 /* FullHeightComicCell.swift */; };
 		286FB59527D5329F00CFFB33 /* BrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FB59427D5329F00CFFB33 /* BrowseViewModel.swift */; };
 		286FB59827D544B000CFFB33 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FB59727D544B000CFFB33 /* UITableView+Extensions.swift */; };
+		286FB59A27D694EB00CFFB33 /* DNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FB59927D694EB00CFFB33 /* DNA.swift */; };
 		28BE316227D4ED31002208A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BE316127D4ED31002208A3 /* AppDelegate.swift */; };
 		28BE316427D4ED31002208A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BE316327D4ED31002208A3 /* SceneDelegate.swift */; };
 		28BE316B27D4ED33002208A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BE316A27D4ED33002208A3 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		286FB59427D5329F00CFFB33 /* BrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewModel.swift; sourceTree = "<group>"; };
 		286FB59627D53DA900CFFB33 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		286FB59727D544B000CFFB33 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		286FB59927D694EB00CFFB33 /* DNA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNA.swift; sourceTree = "<group>"; };
 		28BE315E27D4ED31002208A3 /* xkcd-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xkcd-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BE316127D4ED31002208A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28BE316327D4ED31002208A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				28BE316127D4ED31002208A3 /* AppDelegate.swift */,
 				28BE316327D4ED31002208A3 /* SceneDelegate.swift */,
 				28BE317527D4EE07002208A3 /* TabBarController.swift */,
+				286FB59927D694EB00CFFB33 /* DNA.swift */,
 				286FB56A27D4F0CB00CFFB33 /* Extensions */,
 				286FB56927D4F0C600CFFB33 /* Models */,
 				286FB56B27D4F0CF00CFFB33 /* UI Components */,
@@ -320,6 +323,7 @@
 				28BE317627D4EE07002208A3 /* TabBarController.swift in Sources */,
 				286FB59827D544B000CFFB33 /* UITableView+Extensions.swift in Sources */,
 				286FB57627D4F61500CFFB33 /* Comic.swift in Sources */,
+				286FB59A27D694EB00CFFB33 /* DNA.swift in Sources */,
 				286FB57227D4F3A900CFFB33 /* UIView+Extensions.swift in Sources */,
 				286FB59127D5215700CFFB33 /* String+Extensions.swift in Sources */,
 				28BE316227D4ED31002208A3 /* AppDelegate.swift in Sources */,

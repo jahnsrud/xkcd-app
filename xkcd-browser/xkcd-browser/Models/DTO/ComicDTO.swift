@@ -30,7 +30,7 @@ extension ComicDTO {
     func convertToDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let fullDate = "\(year)-\(month)-\(day)"
-        return dateFormatter.date(from: fullDate)
+        let dateString = "\(year)-\(month)-\(day)"
+        return dateFormatter.date(from: dateString)
     }
 }

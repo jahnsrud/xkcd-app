@@ -4,8 +4,9 @@ import NetworkingKit
 final class FullHeightComicCell: UITableViewCell {
     
     private enum Constants {
-        static let BottomMargin = 16.0
-        static let HorizontalMargin = 20.0
+        static let bottomMargin = 16.0
+        static let horizontalMargin = 20.0
+        static let numberOfLines = 2
     }
     
     private let contentImageView: UIImageView = {
@@ -23,7 +24,7 @@ final class FullHeightComicCell: UITableViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .blue
-        label.numberOfLines = 0
+        label.numberOfLines = Constants.numberOfLines
         return label
     }()
     
@@ -46,13 +47,13 @@ final class FullHeightComicCell: UITableViewCell {
             contentImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             contentImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -Constants.BottomMargin),
+            titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -Constants.bottomMargin),
             titleLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
             
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.BottomMargin),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.HorizontalMargin),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.HorizontalMargin),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.bottomMargin),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalMargin),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalMargin),
             
         ])
     }

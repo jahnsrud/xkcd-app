@@ -3,7 +3,7 @@ import UIKit
 final class ComicDetailViewController: UIViewController {
     
     private enum Constants {
-        static let HorizontalMargin = 20.0
+        static let horizontalMargin = 20.0
     }
     
     private let comic: Comic
@@ -40,8 +40,8 @@ final class ComicDetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.HorizontalMargin),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.HorizontalMargin),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalMargin),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalMargin),
             
             dateLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
             dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
