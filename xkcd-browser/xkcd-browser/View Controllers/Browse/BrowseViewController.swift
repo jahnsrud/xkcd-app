@@ -2,7 +2,7 @@ import UIKit
 import Combine
 
 final class BrowseViewController: UIViewController {
-
+    
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let refreshControl = UIRefreshControl()
     
@@ -18,8 +18,9 @@ final class BrowseViewController: UIViewController {
         addConstraints()
         setupTableView()
         setupViewModel()
+        setupNavigationBar()
     }
-
+    
     private func addViews() {
         view.addAutoLayoutView(tableView)
     }
@@ -51,11 +52,37 @@ final class BrowseViewController: UIViewController {
             .store(in: &cancellables)
     }
     
+    private func setupNavigationBar() {
+        let shareButton = UIBarButtonItem(
+            systemItem: .action, primaryAction: UIAction(handler: { _ in
+                self.presentShareView()
+            })
+        )
+        navigationItem.setRightBarButton(shareButton, animated: false)
+    }
+    
+    private func presentShareView() {
+        guard let visibleComic = visibleComic else {
+            return
+        }
+        let activityVC = UIActivityViewController(
+            activityItems: [visibleComic.imageUrl],
+            applicationActivities: nil
+        )
+        activityVC.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(activityVC, animated: true)
+    }
+    
     private func presentDetailView(for comic: Comic) {
         let vc = ComicDetailViewController(comic: comic)
         let navController = UINavigationController(rootViewController: vc)
         navController.sheetPresentationController?.detents = [.medium(), .large()]
         self.present(navController, animated: true)
+    }
+    
+    private var visibleComic: Comic? {
+        let visibleIndexPath = tableView.indexPathsForVisibleRows?.first
+        return comicItems[visibleIndexPath!.row]
     }
     
 }
