@@ -1,2 +1,5 @@
-"browse.title" = "Browse";
+// Common
+"button.close" = "Close";
 
+// Browse
+"browse.title" = "Browse";
