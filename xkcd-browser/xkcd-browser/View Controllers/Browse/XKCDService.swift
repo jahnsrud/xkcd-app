@@ -43,13 +43,4 @@ final class XKCDService {
             }
         }
     }
-    
-    private func parseFirst(data: Data) {
-        do {
-            let comics = try JSONDecoder().decode(ComicDTO.self, from: data)
-            // TODO:
-            // self.comicItems.append(comics.toModel())
-            self.newestComicNum = comics.toModel().num
-        } catch {}
-    }
 }
