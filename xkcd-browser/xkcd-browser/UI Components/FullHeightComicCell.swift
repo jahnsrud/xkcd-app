@@ -33,7 +33,6 @@ final class FullHeightComicCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: FullHeightComicCell.id)
-        backgroundColor = .init(named: "Background")
         addViews()
         addConstraints()
     }
