@@ -112,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				286FB59027D5215700CFFB33 /* String+Extensions.swift */,
-				286FB57127D4F3A900CFFB33 /* UIView+Extensions.swift */,
 				286FB59727D544B000CFFB33 /* UITableView+Extensions.swift */,
+				286FB57127D4F3A900CFFB33 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				286FB56D27D4F0F500CFFB33 /* Browse */,
-				286FB59D27D7D06900CFFB33 /* Comic Detail View */,
+				286FB59D27D7D06900CFFB33 /* Detail View */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -162,12 +162,12 @@
 			path = NetworkingKit;
 			sourceTree = "<group>";
 		};
-		286FB59D27D7D06900CFFB33 /* Comic Detail View */ = {
+		286FB59D27D7D06900CFFB33 /* Detail View */ = {
 			isa = PBXGroup;
 			children = (
 				286FB58C27D51EFE00CFFB33 /* ComicDetailViewController.swift */,
 			);
-			path = "Comic Detail View";
+			path = "Detail View";
 			sourceTree = "<group>";
 		};
 		286FB59E27D7D83100CFFB33 /* DNA */ = {
