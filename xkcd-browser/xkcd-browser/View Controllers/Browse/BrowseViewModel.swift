@@ -6,7 +6,7 @@ final class BrowseViewModel {
     private var cancellables = Set<AnyCancellable>()
     private let xkcdService = XKCDService()
     private var newestComicNum: Int?
-    private let numberOfComicsToFetch = 5
+    private let numberOfComicsToFetch = 10
     
     init() {
         loadContent()
@@ -26,7 +26,7 @@ final class BrowseViewModel {
     }
     
     private func fetch(numberOfComics number: Int) {
-        for index in (newestComicNum!-5..<newestComicNum!).reversed() {
+        for index in (newestComicNum!-number..<newestComicNum!).reversed() {
             self.fetchComic(number: index)
         }
     }
