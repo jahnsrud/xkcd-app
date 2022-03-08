@@ -140,7 +140,6 @@
 			children = (
 				286FB56E27D4F10A00CFFB33 /* BrowseViewController.swift */,
 				286FB59427D5329F00CFFB33 /* BrowseViewModel.swift */,
-				286FB59B27D7D06000CFFB33 /* XKCDService.swift */,
 			);
 			path = Browse;
 			sourceTree = "<group>";
@@ -178,6 +177,14 @@
 			path = DNA;
 			sourceTree = "<group>";
 		};
+		286FB59F27D7E55400CFFB33 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				286FB59B27D7D06000CFFB33 /* XKCDService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		28BE315527D4ED31002208A3 = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +213,7 @@
 				286FB59E27D7D83100CFFB33 /* DNA */,
 				286FB56A27D4F0CB00CFFB33 /* Extensions */,
 				286FB56927D4F0C600CFFB33 /* Models */,
+				286FB59F27D7E55400CFFB33 /* Services */,
 				286FB56B27D4F0CF00CFFB33 /* UI Components */,
 				286FB56C27D4F0E600CFFB33 /* View Controllers */,
 				28BE316A27D4ED33002208A3 /* Assets.xcassets */,
