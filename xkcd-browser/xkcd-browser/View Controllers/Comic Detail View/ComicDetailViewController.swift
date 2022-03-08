@@ -1,11 +1,6 @@
 import UIKit
 
 final class ComicDetailViewController: UIViewController {
-    
-    private enum Constants {
-        static let horizontalMargin = 20.0
-    }
-    
     private let comic: Comic
     
     private let descriptionLabel: UILabel = {
@@ -49,8 +44,8 @@ final class ComicDetailViewController: UIViewController {
     private func addConstraints() {
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalMargin),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalMargin),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UserInterface.horizontalMargin),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UserInterface.horizontalMargin),
             
             dateLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
             dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),

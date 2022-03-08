@@ -5,7 +5,6 @@ final class FullHeightComicCell: UITableViewCell {
     
     private enum Constants {
         static let bottomMargin = 16.0
-        static let horizontalMargin = 20.0
         static let labelMargin = 8.0
         static let topMargin = 16.0
         static let numberOfLines = 2
@@ -52,8 +51,8 @@ final class FullHeightComicCell: UITableViewCell {
         NSLayoutConstraint.activate([
             comicImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor, constant: Constants.topMargin),
-            comicImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalMargin),
-            comicImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalMargin),
+            comicImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UserInterface.horizontalMargin),
+            comicImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UserInterface.horizontalMargin),
             comicImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -Constants.labelMargin),
 
             titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -Constants.labelMargin),
@@ -61,8 +60,8 @@ final class FullHeightComicCell: UITableViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
 
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.bottomMargin),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalMargin),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalMargin)
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UserInterface.horizontalMargin),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UserInterface.horizontalMargin)
         ])
     }
     
