@@ -2,7 +2,6 @@ import UIKit
 import NetworkingKit
 
 final class FullHeightComicCell: UITableViewCell {
-    
     private enum Constants {
         static let bottomMargin = 22.0
         static let labelMargin = 6.0

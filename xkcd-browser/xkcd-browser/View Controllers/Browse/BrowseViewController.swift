@@ -2,13 +2,12 @@ import UIKit
 import Combine
 
 final class BrowseViewController: UIViewController {
+    private let viewModel = BrowseViewModel()
+    private var comicItems = [Comic]()
+    private var cancellables = Set<AnyCancellable>()
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let refreshControl = UIRefreshControl()
-    
-    private var comicItems = [Comic]()
-    private let viewModel = BrowseViewModel()
-    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
