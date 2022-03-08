@@ -1,6 +1,6 @@
 # xkcd iOS
 
-![Image](https://github.com/jahnsrud/xkcd-app/blob/main/screenshots/featured.png)
+![Image](https://github.com/jahnsrud/xkcd-app/blob/main/Screenshots/featured.png)
 
 * 🗄 Browse the latest xkcd comics.
 * 🤔 See the explanation directly.
