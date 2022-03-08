@@ -11,6 +11,9 @@ final class ComicDetailViewController: UIViewController {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .systemGray
+        label.textAlignment = .center
         return label
     }()
     
@@ -27,13 +30,10 @@ final class ComicDetailViewController: UIViewController {
         super.viewDidLoad()
         title = comic.title
         view.backgroundColor = .systemBackground
-
         addViews()
         addConstraints()
         setupNavigationBar()
-        
-        descriptionLabel.text = comic.alt
-        dateLabel.text = comic.date?.formatted(date: .numeric, time: .omitted)
+        setContent()
     }
     
     private func addViews() {
@@ -43,14 +43,13 @@ final class ComicDetailViewController: UIViewController {
 
     private func addConstraints() {
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UserInterface.horizontalMargin),
+            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UserInterface.horizontalMargin),
+
+            descriptionLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: UserInterface.horizontalMargin),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -UserInterface.horizontalMargin),
-            
-            dateLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
-            dateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            dateLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
         ])
     }
     
@@ -65,4 +64,8 @@ final class ComicDetailViewController: UIViewController {
         navigationItem.setRightBarButton(closeBarButtonItem, animated: false)
     }
     
+    private func setContent() {
+        descriptionLabel.text = comic.alt
+        dateLabel.text = comic.date?.formatted(date: .numeric, time: .omitted)
+    }
 }
