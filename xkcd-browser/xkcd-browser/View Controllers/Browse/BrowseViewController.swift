@@ -109,3 +109,13 @@ extension BrowseViewController: UITableViewDelegate {
         presentDetailView(for: selectedComic)
     }
 }
+
+extension BrowseViewController: TabBarRootView {
+    func scrollToTop() {
+        tableView.scrollToRow(
+            at: IndexPath(row: 0, section: 0),
+            at: .top,
+            animated: true
+        )
+    }
+}
