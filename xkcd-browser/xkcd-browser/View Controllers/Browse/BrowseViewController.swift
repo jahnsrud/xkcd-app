@@ -95,13 +95,6 @@ extension BrowseViewController: UITableViewDataSource {
         let comic = comicItems[indexPath.row]
         let cell = FullHeightComicCell()
         cell.setComic(comic)
-        
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = .gray
-        } else {
-            cell.backgroundColor = .lightGray
-        }
-        
         return cell
     }
     

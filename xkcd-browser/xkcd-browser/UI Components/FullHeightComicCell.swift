@@ -4,9 +4,10 @@ import NetworkingKit
 final class FullHeightComicCell: UITableViewCell {
     
     private enum Constants {
-        static let bottomMargin = 16.0
-        static let labelMargin = 8.0
-        static let topMargin = 16.0
+        static let bottomMargin = 22.0
+        static let labelMargin = 6.0
+        static let imageToLabelMargin = 16.0
+        static let topMargin = 8.0
         static let numberOfLines = 2
     }
     
@@ -18,13 +19,13 @@ final class FullHeightComicCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 22)
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .blue
+        label.textColor = .systemIndigo
         label.numberOfLines = Constants.numberOfLines
         return label
     }()
@@ -33,6 +34,7 @@ final class FullHeightComicCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: FullHeightComicCell.id)
+        backgroundColor = .init(named: "Background")
         addViews()
         addConstraints()
     }
@@ -53,7 +55,7 @@ final class FullHeightComicCell: UITableViewCell {
                 equalTo: contentView.topAnchor, constant: Constants.topMargin),
             comicImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: UserInterface.horizontalMargin),
             comicImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -UserInterface.horizontalMargin),
-            comicImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -Constants.labelMargin),
+            comicImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -Constants.imageToLabelMargin),
 
             titleLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -Constants.labelMargin),
             titleLabel.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
