@@ -20,14 +20,15 @@ extension ComicDTO {
             num: self.num,
             date: convertToDate(),
             title: self.title,
+            imageUrl: URL(string: self.img)!,
             link: self.link,
             alt: self.alt,
-            imageUrl: URL(string: self.img)!,
+            news: self.news,
             transcript: self.transcript
         )
     }
     
-    func convertToDate() -> Date? {
+    private func convertToDate() -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = "\(year)-\(month)-\(day)"
