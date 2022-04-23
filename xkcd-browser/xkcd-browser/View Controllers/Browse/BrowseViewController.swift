@@ -35,8 +35,8 @@ final class BrowseViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.refreshControl = refreshControl
         tableView.registerCells(FullHeightComicCell.self)
-        refreshControl.addAction(UIAction(handler: { _ in
-            self.viewModel.didPullToRefresh()
+        refreshControl.addAction(UIAction(handler: { [weak self] _ in
+            self?.viewModel.didPullToRefresh()
         }), for: .valueChanged)
     }
     
@@ -53,8 +53,8 @@ final class BrowseViewController: UIViewController {
     
     private func setupNavigationBar() {
         let shareButton = UIBarButtonItem(
-            systemItem: .action, primaryAction: UIAction(handler: { _ in
-                self.presentShareView()
+            systemItem: .action, primaryAction: UIAction(handler: { [weak self] _ in
+                self?.presentShareView()
             })
         )
         navigationItem.setRightBarButton(shareButton, animated: false)

@@ -57,8 +57,8 @@ final class ComicDetailViewController: UIViewController {
         let closeBarButtonItem = UIBarButtonItem(
             title: "button.close".localized,
             image: UIImage(systemName: "xmark.circle"),
-            primaryAction: UIAction(handler: { _ in
-                self.dismiss(animated: true)
+            primaryAction: UIAction(handler: { [weak self] _ in
+                self?.dismiss(animated: true)
             })
         )
         navigationItem.setRightBarButton(closeBarButtonItem, animated: false)
