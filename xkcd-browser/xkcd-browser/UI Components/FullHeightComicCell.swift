@@ -72,15 +72,13 @@ final class FullHeightComicCell: UITableViewCell {
     }
     
     private func updateImage(url: URL) {
-        httpClient.fetch(from: url) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    self.comicImageView.image = UIImage(data: data)
-                case .failure:
-                    self.comicImageView.image = nil
-                }
-            }
+        Task {
+            do {
+                let imageData = try await httpClient.fetch(from: url)
+                comicImageView.image = UIImage(data: imageData)
+            } catch {
+                comicImageView.image = nil
+            }   
         }
     }
 }

@@ -1,52 +1,55 @@
 import Foundation
 import Combine
+import NetworkingKit
 
 final class BrowseViewModel {
     @Published var comicItems = [Comic]()
+
     private var cancellables = Set<AnyCancellable>()
-    private let xkcdService = XKCDService()
+    private let xkcdService = XKCDService(httpClient: HTTPClient())
     private var newestComicNum: Int?
     private let numberOfComicsToFetch = 10
     
     init() {
-        loadContent()
-    }
-    
-    private func loadContent() {
-        xkcdService.fetchFirstComic { result in
-            switch result {
-            case .success(let comic):
-                self.comicItems.append(comic)
-                self.newestComicNum = comic.num
-                self.fetch(numberOfComics: self.numberOfComicsToFetch)
-            case .failure(let error):
-                print("Something went wrong: \(error.localizedDescription)")
-            }
+        Task {
+            await loadContent()
         }
     }
     
-    private func fetch(numberOfComics number: Int) {
-        for index in (newestComicNum!-number..<newestComicNum!).reversed() {
-            self.fetchComic(number: index)
-        }
-    }
-
-    private func fetchComic(number: Int) {
-        xkcdService.fetchComic(number: number) { result in
-            switch result {
-            case .success(let comic):
-                self.comicItems.append(comic)
-            case .failure(let error):
-                print("Something went wrong: \(error.localizedDescription)")
-            }
-        }
-    }
-
     // MARK: User Actions
     
     func didPullToRefresh() {
         comicItems.removeAll()
-        loadContent()
+        Task {
+            await loadContent()
+        }
     }
     
+    // MARK: Load Content
+    
+    private func loadContent() async {
+        do {
+            let firstComic = try await xkcdService.fetchFirstComic()
+            comicItems.append(firstComic)
+            newestComicNum = firstComic.num
+            await fetch(numberOfComics: numberOfComicsToFetch)
+        } catch {
+            print("Something went wrong: \(error.localizedDescription)")
+        }
+    }
+    
+    private func fetch(numberOfComics number: Int) async {
+        for index in (newestComicNum!-number..<newestComicNum!).reversed() {
+            await fetchComic(number: index)
+        }
+    }
+
+    private func fetchComic(number: Int) async {
+        do {
+            let comic = try await xkcdService.fetchComic(number: number)
+            self.comicItems.append(comic)
+        } catch {
+            print("Something went wrong: \(error.localizedDescription)")
+        }
+    }
 }
